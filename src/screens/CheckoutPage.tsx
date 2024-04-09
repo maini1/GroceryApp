@@ -9,7 +9,7 @@ import {
   Pressable,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {increaseQuantity, decreaseQuantity} from '../redux/store';
+import {increaseQuantity, decreaseQuantity} from '../redux/cartSlice';
 import { useNavigation } from '@react-navigation/native';
 
 const CheckoutPage: React.FC = () => {

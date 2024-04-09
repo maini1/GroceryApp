@@ -5,13 +5,15 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ProductScreen from './src/screens/ProductList';
 import {Provider} from 'react-redux';
-import store from './src/redux/store';
+import store, {persistor} from './src/redux/store';
 import './src/debugger/debuggerConfig'
 import CheckoutPage from './src/screens/CheckoutPage';
 import PaymentPage from './src/screens/PaymentPage';
 import OrderSummaryPage from './src/screens/OrderSummaryPage';
 import { Product } from './src/assests/productTypes';
 import { ProductDetails } from './src/components/ProductDetails';
+import {PersistGate} from 'redux-persist/integration/react';
+import './debugger';
 
 const Stack = createNativeStackNavigator<NavigationType>();
 
@@ -25,8 +27,9 @@ export type NavigationType = {
 
 function App() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
     <Provider store={store}>
+    <PersistGate persistor={persistor}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="ProductList" component={ProductScreen} />
@@ -36,9 +39,11 @@ function App() {
           <Stack.Screen name="OrderSummaryPage" component={OrderSummaryPage} />
         </Stack.Navigator>
       </NavigationContainer>
+      </PersistGate>
     </Provider>
     </GestureHandlerRootView>
   );
 }
+
 
 export default App;

@@ -18,7 +18,7 @@ import {
   increaseQuantity,
   decreaseQuantity,
   removeFromCart,
-} from '../redux/store';
+} from '../redux/cartSlice';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { NavigationType } from '../../App';
@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: '#FFFFFF',
   },
   searchContainer: {
     flexDirection: 'row',
